@@ -15,7 +15,7 @@ avaliacoes = pd.read_csv("data/olist_order_reviews_dataset.csv")
 # 2. Base consolidada
 base = (
     itens
-    .merge(pedidos[["order_id", "order_status", "order_purchase_timestamp"]], on="order_id")
+    .merge(pedidos[["order_id", "order_status", "order_purchase_timestamp", "customer_id"]], on="order_id")
     .merge(produtos[["product_id", "product_category_name"]], on="product_id")
     .merge(clientes[["customer_id", "customer_state"]], on="customer_id")
     .merge(avaliacoes[["order_id", "review_score"]].drop_duplicates("order_id"), on="order_id")
